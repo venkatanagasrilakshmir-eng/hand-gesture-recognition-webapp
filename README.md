@@ -96,10 +96,8 @@ data/
 
 ---
 
-## 📸 Example UI
-
-![UI Example](docs/ui_example.png)
-
+## 📸 it shows:
+<img width="676" height="487" alt="59682" src="https://github.com/user-attachments/assets/8153d1b6-82ea-4e42-a4dd-e5c55291ae4b" />
 *Give users a friendly upload prompt and display result instantly!*
 
 ---
