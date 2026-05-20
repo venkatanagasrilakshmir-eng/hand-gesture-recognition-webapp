@@ -1,0 +1,9 @@
+data/
+  Fist/
+    img1.png
+    img2.png
+    ...
+  Open/
+    img1.jpg
+    ...
+  exploration.ipynb      # For EDA, preprocessing, etc.
