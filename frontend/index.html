@@ -1,0 +1,191 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hand Gesture Recognition</title>
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:Arial, sans-serif;
+    }
+
+    body{
+      background:linear-gradient(135deg,#0f172a,#1e293b);
+      color:white;
+      min-height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      padding:20px;
+    }
+
+    .container{
+      width:100%;
+      max-width:900px;
+      background:#111827;
+      border-radius:20px;
+      padding:25px;
+      box-shadow:0 0 20px rgba(0,0,0,0.5);
+      text-align:center;
+    }
+
+    h1{
+      margin-bottom:10px;
+      font-size:2.2rem;
+      color:#38bdf8;
+    }
+
+    p{
+      color:#cbd5e1;
+      margin-bottom:20px;
+    }
+
+    .video-box{
+      position:relative;
+      width:100%;
+      max-width:700px;
+      margin:auto;
+      border-radius:20px;
+      overflow:hidden;
+      border:4px solid #38bdf8;
+    }
+
+    video{
+      width:100%;
+      height:auto;
+      display:block;
+    }
+
+    .gesture-card{
+      margin-top:25px;
+      background:#1e293b;
+      padding:20px;
+      border-radius:15px;
+      border:2px solid #38bdf8;
+    }
+
+    .gesture-title{
+      font-size:1.3rem;
+      margin-bottom:10px;
+      color:#facc15;
+    }
+
+    .gesture-result{
+      font-size:2rem;
+      font-weight:bold;
+      color:#22c55e;
+    }
+
+    .buttons{
+      margin-top:20px;
+      display:flex;
+      justify-content:center;
+      gap:15px;
+      flex-wrap:wrap;
+    }
+
+    button{
+      padding:12px 24px;
+      border:none;
+      border-radius:10px;
+      background:#38bdf8;
+      color:white;
+      font-size:1rem;
+      cursor:pointer;
+      transition:0.3s;
+    }
+
+    button:hover{
+      background:#0ea5e9;
+      transform:scale(1.05);
+    }
+
+    footer{
+      margin-top:25px;
+      color:#94a3b8;
+      font-size:0.9rem;
+    }
+
+    @media(max-width:600px){
+      h1{
+        font-size:1.7rem;
+      }
+
+      .gesture-result{
+        font-size:1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <h1>✋ Hand Gesture Recognition</h1>
+    <p>AI Based Frontend Gesture Detection Interface</p>
+
+    <div class="video-box">
+      <video id="video" autoplay muted></video>
+    </div>
+
+    <div class="gesture-card">
+      <div class="gesture-title">Detected Gesture</div>
+      <div class="gesture-result" id="gestureText">
+        Waiting...
+      </div>
+    </div>
+
+    <div class="buttons">
+      <button onclick="startCamera()">Start Camera</button>
+      <button onclick="detectGesture()">Detect Gesture</button>
+    </div>
+
+    <footer>
+      HTML • CSS • JavaScript Frontend Project
+    </footer>
+
+  </div>
+
+  <script>
+    const video = document.getElementById("video");
+    const gestureText = document.getElementById("gestureText");
+
+    async function startCamera() {
+      try {
+        const stream = await navigator.mediaDevices.getUserMedia({
+          video: true
+        });
+
+        video.srcObject = stream;
+
+      } catch (error) {
+        alert("Camera access denied!");
+      }
+    }
+
+    function detectGesture() {
+
+      // Demo gestures
+      const gestures = [
+        "✋ Open Palm",
+        "🤚 Back Hand",
+        "👍 Thumbs Up",
+        "👊 Fist",
+        "👌 OK Sign",
+        "✌ Victory"
+      ];
+
+      const randomGesture =
+        gestures[Math.floor(Math.random() * gestures.length)];
+
+      gestureText.innerHTML = randomGesture;
+    }
+  </script>
+
+</body>
+</html>
